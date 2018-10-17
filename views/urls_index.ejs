@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>   
+        <title>TinyApp</title>
+    </head>
+
+    <body style="font-size:20px; padding:30px;"></body>
+    <% include ./partials/_header %>
+    <a href='/urls/new'>CREATE URL</a>
+    <header>
+     <h1>Welcome to my URL shortener APP!</h1>
+    </header>
+    
+    <% for (let url in urls){%>
+    <li style="padding = 15px;"> 
+    <%= url %> -> <a href= <%= urls[url].URL %>> <%= urls[url].URL %> </a>
+    <form style="display: inline-block" method="POST" action="/urls/<%= url %>/delete">
+        <button style="margin: 15px;" type="submit">Delete</button><br>
+    </form>
+    <a style="margin: 10px;" href="/urls/<%= url %>">Edit</a>
+    </li>
+    <br>
+    <% } %>
+   
+    <form method="POST" action="/urls/shortURL/delete"></form>
+  </body>
+</html>
